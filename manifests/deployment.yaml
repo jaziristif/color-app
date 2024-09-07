@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: color-app
-  namespace: default
+  namespace: color-app
 spec:
   replicas: 1
   selector:
