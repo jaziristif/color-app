@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: color-config
-  namespace: default
+  namespace: color-app
 data:
   index.html: |
     <!DOCTYPE html>
