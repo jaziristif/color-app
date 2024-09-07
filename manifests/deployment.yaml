@@ -5,24 +5,19 @@ metadata:
   namespace: color-app
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: color-app
   template:
     metadata:
-      labels:
-        app: color-app
+      annotations:
+        configmap-update-hash: "{{ .Values.colorConfigMap | sha256sum }}"  # Exemple pour forcer le redéploiement
     spec:
       containers:
-      - name: nginx
+      - name: color-app
         image: nginx:latest
-        ports:
-        - containerPort: 80
         volumeMounts:
         - name: html-volume
-          mountPath: /usr/share/nginx/html/index.html  # Monte le fichier index.html
+          mountPath: /usr/share/nginx/html/index.html
           subPath: index.html
       volumes:
       - name: html-volume
         configMap:
-          name: color-config  # Utilise le ConfigMap créé précédemment
+          name: color-config
