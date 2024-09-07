@@ -8,6 +8,6 @@ spec:
   ports:
   - port: 80
     targetPort: 80
-    nodePort: 30001  # Utilise ce port pour accéder à l'application
+    nodePort: 30002  # Utilise ce port pour accéder à l'application
   selector:
     app: color-app
